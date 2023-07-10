@@ -1,0 +1,78 @@
+@mixin flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.top-navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    // padding: 0.5rem;
+    // background-color: rgb(1, 12, 22);
+    background-color: rgb(4, 27, 48);
+    font-family: 'poppins', sans-serif;
+    .first{
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+        // margin: 1rem
+        margin-left: 6rem;
+        padding: 1rem;
+        .phone{
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            p{
+                font-size: 1.3rem;
+                color: white;
+            }
+        }
+        .email{
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            p{
+                font-size: 1.3rem;
+                color: white;
+
+            }
+        }
+    }
+    .second{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        a{
+            font-size: 1.4rem;
+            color: white;
+            margin-right: 2rem;
+        }
+        .select{
+            .lang{
+                border: none;
+                outline: none;
+                background-color: transparent;
+                color: white;
+                option{
+                    background-color: black;
+                    padding: 0.4rem;
+                }
+            }
+        }
+        .money{
+            margin-right: 1rem;
+            .curr{
+                border: none;
+                outline: none;
+                background-color: transparent;
+                color: white;
+                option{
+                    background-color: black;
+                    padding: 0.4rem;
+                }
+            }
+        }
+    }
+}

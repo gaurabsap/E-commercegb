@@ -1,0 +1,96 @@
+.signup__wrapper, .login__wrapper{
+    width: 100%;
+    // height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-color: rgb(240, 240, 10);
+    .signup, .login{
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+        justify-content: center;
+        padding: 3rem;
+        background-color: white;
+        border-radius: 20px;
+        .head{
+            h1{
+                font-size: 2.3rem;
+            }
+        }
+        .login_form{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+    
+            .username, .email, .password, .cpassword{
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                label{
+                    font-size: 1.5rem;
+                }
+                input{
+                    padding: 1rem;
+                    font-size: 1.5rem;
+                    background-color: rgb(236, 230, 230);
+                    color: black;
+                    border-radius: 5px;
+                    border: none;
+                    outline: none;
+    
+                }
+            }
+            .checked_boxs{
+                display: flex;
+                justify-content: flex-start;
+                gap: 1rem;
+                padding: 1rem;
+                input{
+                    width: 1.7rem;
+                    font-size: 3rem;
+
+                }
+                label{
+                    font-size: 1.5rem;
+                }
+            }
+            .check__password{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 1rem;
+                .checked_box{
+                    display: flex;
+                    gap: 1rem;
+                    input{
+                        width: 1.7rem;
+                        font-size: 3rem;
+    
+                    }
+                    label{
+                        font-size: 1.5rem;
+                    }
+                }
+                a{
+                    font-size: 1.5rem;
+
+                }
+            }
+            button{
+                padding: 1rem;
+                font-size: 1.7rem;
+                color: white;
+                background-color: purple;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+        }
+    }
+}

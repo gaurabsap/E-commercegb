@@ -1,0 +1,114 @@
+.Product__page {
+  display: flex;
+  //   align-items: center;
+  justify-content: center;
+  padding: 5rem;
+  width: 100%;
+  //   height: 100vh;
+  //   background-color: beige;
+  //   border: 1px solid red;
+  .products__data {
+    position: relative;
+    .all__data {
+      display: flex;
+      //   margin: 0 auto;
+      //   margin-left: 20rem;
+      //   position: absolute;
+      //   right: 50%;
+
+      gap: 5rem;
+      .image {
+        position: relative;
+        width: 100%;
+        height: 50vh;
+        overflow: hidden;
+        // border: 2px solid rgb(230, 218, 218);
+        border-radius: 10px;
+        justify-content: flex-end;
+        //
+        // border: 1px solid red;
+        img {
+          position: absolute;
+          right: 0;
+          width: 50%;
+
+          //   height: 50%;
+          // border: 1px solid gray;
+          border-radius: 10px;
+        }
+      }
+      .details {
+        display: flex;
+        flex-direction: column;
+        // align-items: center;
+        gap: 1rem;
+        // border: 1px solid red;
+        // width: 100%;
+        padding: 1rem;
+        .title {
+          h1 {
+            width: 100%;
+          }
+        }
+        .others {
+          p {
+            font-size: 1.7rem;
+            // color: red;
+          }
+          .tara {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            h3 {
+              font-size: 1.8rem;
+            }
+            .star {
+              //   margin-left: 0.2rem;
+              font-size: 2rem;
+            }
+          }
+          .desc {
+            // border: 1px solid red;
+            margin-top: 2rem;
+            h1 {
+              font-size: 1.6rem;
+            }
+            p {
+              margin-top: 1rem;
+              font-size: 1.6rem;
+              width: 70%;
+              text-align: justify;
+            }
+          }
+        }
+        .carts {
+          gap: 1rem;
+          .qt_data {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            p {
+              font-size: 1.7rem;
+            }
+            select {
+              padding: 0.6rem;
+              border: 1px solid gray;
+              border-radius: 5px;
+              outline: none;
+            }
+          }
+          button {
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: orangered;
+            color: white;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

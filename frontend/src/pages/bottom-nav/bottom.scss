@@ -1,0 +1,55 @@
+.bottom-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem;
+  box-shadow: 0px 1px 2px rgb(73, 70, 70);
+  z-index: -1;
+
+  .column {
+    margin-top: 1rem;
+    display: flex;
+    margin-left: 5rem;
+    align-items: center;
+    gap: 1rem;
+    position: sticky;
+    top: 0;
+    .cat {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      background-color: beige;
+      padding: 1rem;
+      cursor: pointer;
+    }
+  }
+  .links {
+    a {
+      font-size: 1.8rem;
+      margin-right: 2rem;
+      padding: 0.8rem;
+      &:hover {
+        // background-color: black;
+        border-radius: 10px;
+        transition: all 0.2s;
+        color: red;
+      }
+      //   .active {
+      //     color: red;
+      //   }
+    }
+    // .active {
+    //   color: red;
+    // }
+    .contact {
+      padding: 0.8rem;
+      background-color: #ff4433;
+      border-radius: 10px;
+      color: white;
+      &:hover {
+        color: white;
+      }
+    }
+  }
+}
