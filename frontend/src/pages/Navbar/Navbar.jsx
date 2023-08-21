@@ -49,7 +49,7 @@ const Navbar = () => {
   const UpdateCart = async () => {
     // dispatch(setCartData(cartNumber, quantitys));
     // // dispatch(setQuantity(quantitys));
-    const resq = await axios.get("http://127.0.0.1:3000/api/v1/user/logout", {
+    const resq = await axios.get("http://127.0.0.1:5000/api/v1/user/logout", {
       withCredentials: true,
     });
     console.log(resq);
@@ -59,7 +59,7 @@ const Navbar = () => {
   useEffect(() => {
     const ResqApi = async () => {
       const resq = await axios.get(
-        "http://127.0.0.1:3000/api/v1/user/profile",
+        "http://127.0.0.1:5000/api/v1/user/profile",
         { withCredentials: true }
       );
       setUser(resq.data.user.profile.pic);

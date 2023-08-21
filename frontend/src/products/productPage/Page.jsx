@@ -9,7 +9,7 @@ import { cartAdd } from "../../store/CartSlice";
 
 const Page = () => {
   const dispatch = useDispatch();
-  const [qt, setQt] = useState();
+  const [qts, setQts] = useState();
   const { id } = useParams();
   const [data, setData] = useState();
   console.log(data);
@@ -17,7 +17,7 @@ const Page = () => {
   useEffect(() => {
     const Apiresq = async () => {
       const resq = await axios.get(
-        `http://127.0.0.1:3000/api/v1/product/${id}`
+        `http://127.0.0.1:5000/api/v1/product/${id}`
       );
       console.log(resq);
       setData([resq.data.data]);
@@ -28,9 +28,13 @@ const Page = () => {
   const handleQuantityChange = (qt) => {
     // dispatch(setCartData({ itemId: product._id, quantity: qt }));
     // console.log(product._id);
-    setQt(qt);
+    console.log(qt);
+    setQts(qt);
   };
   const AddCart = (product) => {
+    console.log("add");
+    alert("add");
+    console.log(product);
     dispatch(cartAdd(product));
     dispatch(setCartData({ itemId: product, quantity: 1 }));
     // dispatch(setCartData({ itemId: product._id, quantity: qt }));

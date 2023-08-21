@@ -12,7 +12,7 @@ const Search = () => {
   useEffect(() => {
     const CallApi = async () => {
       const resq = await axios.get(
-        `http://127.0.0.1:3000/api/v1/search/products?search=${data}`
+        `http://127.0.0.1:5000/api/v1/search/products?search=${data}`
       );
       console.log(resq);
       setDetails(resq.data.search);

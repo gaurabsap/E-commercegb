@@ -10,19 +10,30 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCartData } from "../store/cartFinal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Setstatus } from "../store/reducer/UserStatus";
+import CartComponent from "../CartComponent";
 
+axios.defaults.baseURL = "http://127.0.0.1:5000/api/v1";
 const CartProduct = () => {
+  const checkItems = useSelector((state) => state.allCarts.card);
+  console.log(checkItems);
+  const [info, setInfo] = useState({
+    email: "",
+    password: "",
+  });
   const [popup, setPopup] = useState(false);
   const loginStatus = useSelector((state) => state.userStatus.status);
   //   console.log(loginStatus);
   const [add, setAdd] = useState("Add to cart");
   const dispatch = useDispatch();
   const [data, setData] = useState([]);
+  const [load, setLoad] = useState(false);
+  const [button, setButton] = useState("Add to cart");
 
   useEffect(() => {
     const getProducts = async () => {
       const res = await axios.get(
-        "http://127.0.0.1:3000/api/v1/get-products?limit=8&sort=1"
+        "http://127.0.0.1:5000/api/v1/get-products?limit=8&sort=1"
       );
       setData(res.data.product);
     };
@@ -31,12 +42,19 @@ const CartProduct = () => {
   const pass = useRef();
 
   const AddCart = (product) => {
+    // console.log("add");
     if (loginStatus === false) {
       setPopup(true);
+    } else {
+      if (checkItems.includes(product)) {
+        alert("Already added");
+      } else {
+        // setButton("Added");
+        dispatch(cartAdd(product));
+        dispatch(setCartData({ itemId: product, quantity: 1 }));
+        toast.success("Added to the cart");
+      }
     }
-    dispatch(cartAdd(product));
-    dispatch(setCartData({ itemId: product, quantity: 1 }));
-    toast.success("Added to the cart");
   };
 
   const ShowPassword = (e) => {
@@ -50,8 +68,34 @@ const CartProduct = () => {
     setPopup(false);
   };
 
-  const handleInput = () => {};
-  const LoginAccount = () => {};
+  const handleInput = (e) => {
+    const { name, value } = e.target;
+    setInfo((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+  const LoginAccount = async (e) => {
+    e.preventDefault();
+    try {
+      setLoad(true);
+      const resq = await axios.post("/user/login", info);
+      console.log(resq);
+      if (resq.status === 200) {
+        localStorage.setItem("csrf-token", resq.data.csrf);
+        dispatch(Setstatus(true));
+        location.reload();
+      }
+      setLoad(false);
+    } catch (error) {
+      setLoad(false);
+      console.log(error.response.data.message);
+      setError(error.response.data.message);
+      setTimeout(() => {
+        setError("");
+      }, 3000);
+    }
+  };
 
   return (
     <>
@@ -78,6 +122,7 @@ const CartProduct = () => {
                 <select className=''></select>
             </div> */}
         </div>
+        <CartComponent data={data} />
         <div className="products-datas">
           {data.map((dat, i) => {
             const { title, desc, image, rating, price, _id } = dat;
@@ -124,7 +169,7 @@ const CartProduct = () => {
                     </p>
                   </div>
                   <div className="rating">
-                    <button onClick={() => AddCart(dat)}>{add}</button>
+                    <button onClick={() => AddCart(dat)}>{button}</button>
                   </div>
                 </div>
               </div>

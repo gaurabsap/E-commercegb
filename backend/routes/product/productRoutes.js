@@ -14,7 +14,7 @@ import { isAdmin } from "../../middleware/adminCheck.js";
 export const proute = express.Router();
 
 proute.get("/get-products", GetProducts);
-proute.post("/create-products", CreateProducts);
+proute.post("/create-products", CheckCookie, isAdmin, CreateProducts);
 proute.put("/update-products", CheckCookie, isAdmin, UpdateProducts);
 proute.delete("/delete-products", CheckCookie, isAdmin, DeleteProducts);
 

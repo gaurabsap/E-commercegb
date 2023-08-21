@@ -9,7 +9,7 @@ const Related = ({ id }) => {
   useEffect(() => {
     const CallApi = async () => {
       const resq = await axios.get(
-        `http://127.0.0.1:3000/api/v1/related-product/${id}`
+        `http://127.0.0.1:5000/api/v1/related-product/${id}`
       );
       console.log(resq);
       setData(resq.data.related);

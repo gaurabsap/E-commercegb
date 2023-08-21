@@ -6,11 +6,9 @@ const cartFinalSlice = createSlice({
   initialState: {
     cartData: [],
   },
-
   reducers: {
     setCartData(state, action) {
       // console.log(action.payload.itemsId)
-
       const { itemId, quantity } = action.payload;
       console.log(itemId);
       if (quantity > 1) {
@@ -27,6 +25,7 @@ const cartFinalSlice = createSlice({
       }
     },
     setcartRemove(state, action) {
+      console.log(action.payload.itemId);
       state.cartData = state.cartData.filter(
         (item) => item.itemId._id !== action.payload.itemId
       );

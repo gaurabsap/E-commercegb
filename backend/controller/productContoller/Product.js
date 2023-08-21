@@ -159,9 +159,9 @@ export const getRelatedProduct = async (resq, resp) => {
 };
 
 export const getSearchProduct = async (resq, resp) => {
-  console.log("hit");
+  // console.log("hit");
   const { search } = resq.query;
-  console.log(search);
+  // console.log(search);
   try {
     const find = await ProductModel.find({
       $or: [
@@ -172,7 +172,7 @@ export const getSearchProduct = async (resq, resp) => {
     if (!find) {
       return resp.status(400).json({
         sucess: false,
-        message: "Not Data found",
+        message: "No Data found",
       });
     } else {
       return resp.status(200).json({
@@ -180,7 +180,7 @@ export const getSearchProduct = async (resq, resp) => {
         search: find,
       });
     }
-    console.log(find);
+    // console.log(find);
   } catch (error) {
     console.log(error.message);
   }
