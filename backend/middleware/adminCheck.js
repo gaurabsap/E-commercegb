@@ -7,7 +7,7 @@ export const isAdmin = async (resq, resp, next) => {
     const admin = await UserModel.findOne({ _id: id });
     console.log(admin);
     if (admin.isAdmin === 1) {
-      console.log("admin ho");
+      // console.log("admin ho");
       next();
     } else {
       return resp.status(400).json({
