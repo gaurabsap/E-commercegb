@@ -160,15 +160,28 @@ export const getRelatedProduct = async (resq, resp) => {
 
 export const getSearchProduct = async (resq, resp) => {
   // console.log("hit");
-  const { search } = resq.query;
-  // console.log(search);
+  let { search, price } = resq.query;
+  console.log(price);
+  let sortCriteria = {};
+  if (price === "low") {
+    sortCriteria = { price: 1 };
+  } else if (price === "high") {
+    sortCriteria = { price: -1 };
+  } else {
+    sortCriteria = { rating: -1 };
+  }
+  console.log(price);
   try {
+    // let sortCriteria = { price: price };
+    // if (price === 0) {
+    //   sortCriteria = { rating: -1 };
+    // }
     const find = await ProductModel.find({
       $or: [
         { title: { $regex: search, $options: "i" } },
         { desc: { $regex: search, $options: "i" } },
       ],
-    });
+    })?.sort(sortCriteria);
     if (!find) {
       return resp.status(400).json({
         sucess: false,
@@ -185,3 +198,25 @@ export const getSearchProduct = async (resq, resp) => {
     console.log(error.message);
   }
 };
+
+// export const FilterProduct = async (resq, resp) => {
+//   let { price } = resq.query;
+//   if (price === "low") {
+//     sortCriteria = { price: 1 };
+//   } else if (price === "high") {
+//     sortCriteria = { price: -1 };
+//   } else {
+//     sortCriteria = { rating: -1 };
+//   }
+//   console.log(price);
+//   console.log(resq.query);
+//   try {
+//     const filter = await ProductModel.find({})?.sort({ price: price });
+//     console.log(filter);
+//     return resp.status(200).json({
+//       filter,
+//     });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };

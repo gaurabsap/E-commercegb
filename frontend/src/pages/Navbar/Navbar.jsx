@@ -49,10 +49,8 @@ const Navbar = () => {
   const UpdateCart = async () => {
     // dispatch(setCartData(cartNumber, quantitys));
     // // dispatch(setQuantity(quantitys));
-    const resq = await axios.get("http://127.0.0.1:5000/api/v1/user/logout", {
-      withCredentials: true,
-    });
-    console.log(resq);
+    // console.log(finalCart);
+    setshowCart(false);
   };
   const [search, setSearch] = useState();
 
@@ -170,7 +168,7 @@ const Navbar = () => {
             {cartNumber.length > 0 ? (
               <div className="last__buttons">
                 <button onClick={HideCart}>Continue shopping</button>
-                <Link onClick={UpdateCart}>
+                <Link onClick={UpdateCart} to="/checkout">
                   Checkout <GrFormNextLink size={26} color="white" />
                 </Link>
               </div>

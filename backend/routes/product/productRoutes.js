@@ -21,3 +21,4 @@ proute.delete("/delete-products", CheckCookie, isAdmin, DeleteProducts);
 proute.get("/product/:id", getProductData);
 proute.get("/related-product/:id", getRelatedProduct);
 proute.get("/search/products", getSearchProduct);
+// proute.get("/filter/products", FilterProduct);

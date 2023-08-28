@@ -1,11 +1,11 @@
 import UserModel from "../model/userSchema/UserSchema.js";
 
 export const isAdmin = async (resq, resp, next) => {
+  // console.log(resq.id);
   const { id } = resq;
   try {
     const admin = await UserModel.findOne({ _id: id });
-    // console.log(admin);
-    // console.log(admin);
+    console.log(admin);
     if (admin.isAdmin === 1) {
       console.log("admin ho");
       next();

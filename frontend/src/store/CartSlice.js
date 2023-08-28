@@ -26,8 +26,6 @@ const CartSlide = createSlice({
     //   },
     cartRemove(state, action) {
       state.card = state.card.filter((item) => item._id !== action.payload);
-      // console.log(state.card)
-
       localStorage.setItem("cart", JSON.stringify(state.card));
     },
   },

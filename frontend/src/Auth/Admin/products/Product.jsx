@@ -5,6 +5,7 @@ import Loading from "../../../loading/loading";
 const Product = () => {
   const [imgview, setimgView] = useState(null);
   const [load, setLoad] = useState(false);
+  const [error, setError] = useState();
   const [data, setData] = useState({
     title: "",
     desc: "",
@@ -59,17 +60,19 @@ const Product = () => {
     try {
       setLoad(true);
       const resq = await axios.post(
-        "http://127.0.0.1:3000/api/v1/create-products",
+        "http://127.0.0.1:5000/api/v1/create-products",
         fulldata
       );
       console.log(resq);
       if (resq.status === 201) {
         setLoad(false);
         setData("");
+        setError(resq.data.message);
       }
     } catch (error) {
       console.log(error);
       setLoad(false);
+      setError(error.response.data.message);
     }
   };
   return (
@@ -148,6 +151,7 @@ const Product = () => {
             )}
             <button onClick={CreateProduct}>Create</button>
           </form>
+          <p style={{ color: "red", fontSize: "20px" }}>{error}</p>
         </div>
       </div>
     </>

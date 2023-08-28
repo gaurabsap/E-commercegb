@@ -13,26 +13,31 @@ import Login from "./Auth/user/userAuth/Login";
 import Signup from "./Auth/user/userAuth/Signup";
 import Page from "./products/productPage/Page";
 import Search from "./pages/search/Search";
+import { ProductsData } from "./pages/search/Context";
+import Checkout from "./products/checkout/Checkout";
 
 function App() {
   return (
     <>
-      <Provider store={store}>
-        <BrowserRouter>
-          <Nav />
-          <Navbar />
-          <NavBottom />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/admin/product" element={<Product />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/product/:id" element={<Page />} />
-            <Route path="/search" element={<Search />} />
-          </Routes>
-          {/* <CartProduct/> */}
-        </BrowserRouter>
-      </Provider>
+      <ProductsData>
+        <Provider store={store}>
+          <BrowserRouter>
+            <Nav />
+            <Navbar />
+            <NavBottom />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/admin/product" element={<Product />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/product/:id" element={<Page />} />
+              <Route path="/search" element={<Search />} />
+              <Route path="/checkout" element={<Checkout />} />
+            </Routes>
+            {/* <CartProduct/> */}
+          </BrowserRouter>
+        </Provider>
+      </ProductsData>
     </>
   );
 }

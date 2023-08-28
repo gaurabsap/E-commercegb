@@ -3,7 +3,7 @@ import UserModel from "../model/userSchema/UserSchema.js";
 
 export const CheckCookie = async (resq, resp, next) => {
   const { token } = resq.cookies;
-  //   console.log(token);
+  // console.log(token);
   try {
     jwt.verify(String(token), process.env.SECRET, (err, datas) => {
       if (err) {
@@ -21,7 +21,7 @@ export const CheckCookie = async (resq, resp, next) => {
               });
             } else {
               resq.id = datas.id;
-              // console.log(datas.id)
+              console.log(datas.id);
               next();
             }
           })
