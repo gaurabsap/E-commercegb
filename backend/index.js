@@ -7,9 +7,8 @@ import routes from "./routes/userRoutes/userRoute.js";
 import { croute } from "./routes/product/categoryRoute.js";
 import { proute } from "./routes/product/productRoutes.js";
 
-dotenv.config();
 const app = express();
-
+dotenv.config();
 app.use(
   cors({
     credentials: true,

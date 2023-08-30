@@ -64,6 +64,7 @@ export const UserRegister = async (resq, resp) => {
       });
     }
   } catch (error) {
+    console.log(error);
     if (error.code === 11000) {
       return resp.status(400).json({
         sucess: false,
@@ -76,6 +77,7 @@ export const UserRegister = async (resq, resp) => {
         message: "Invalid email",
       });
     } else {
+      console.log(error);
       return resp.status(500).json({
         sucess: false,
         message: "Server error",

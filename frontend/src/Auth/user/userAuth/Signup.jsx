@@ -51,7 +51,7 @@ const Signup = () => {
     } catch (error) {
       setLoad(false);
       //   console.log(error.reponse.data);
-      console.log(error.response.data.message);
+      // console.log(error.response.data.message);
       setError(error.response.data?.message);
       setTimeout(() => {
         setError("");

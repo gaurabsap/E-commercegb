@@ -9,7 +9,7 @@ export const CheckCookie = async (resq, resp, next) => {
       if (err) {
         return resp.status(404).json({
           sucess: false,
-          message: "Invalid token",
+          message: "Unauthorized User",
         });
       } else {
         UserModel.findOne({ _id: datas.id })
@@ -21,7 +21,7 @@ export const CheckCookie = async (resq, resp, next) => {
               });
             } else {
               resq.id = datas.id;
-              console.log(datas.id);
+              // console.log(datas.id);
               next();
             }
           })
